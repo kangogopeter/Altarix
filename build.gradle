@@ -1,0 +1,309 @@
+plugins {
+    id 'java'
+    id 'application'
+    //id 'maven-publish'
+    id 'org.springframework.boot' version '3.0.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+    //id("uk.co.scottdennison.java.gradle.plugin.velocity") version "0.1-SNAPSHOT"
+    id("dev.anies.gradle.template") version "0.0.2"
+    //id("com.brambolt.gradle.velocity") version "2022.05.01-7057"
+    id 'org.hibernate.orm' version '6.2.2.Final'
+    //id 'com.bmuschko.docker-spring-boot-application' version '6.1.4'
+    id 'com.bmuschko.tomcat' version '2.5'
+}
+
+group = 'org.kangogo'
+version = '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+//apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+
+application {
+    mainClass = 'org.kangogo.Main'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+publishing {
+    publications {
+//        mavenJava(MavenPublication) {
+//            from components.java
+//        }
+    }
+}
+
+//sourceCompatibility = '17'
+
+
+ext {
+    set('springShellVersion', "3.0.0-M3")
+    set('springCloudVersion', "2022.0.3")
+    //set('vaadinVersion', "24.1.0")
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+
+    implementation 'com.sun.xml.bind:jaxb-core:4.0.5'
+
+    implementation 'org.springframework.boot:spring-boot-starter-amqp:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-batch:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.0.7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-starter-integration:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache:3.0.7'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-rsocket:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket:3.0.4'
+    implementation 'org.apache.kafka:kafka-streams'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+    implementation 'org.springframework.amqp:spring-rabbit-stream'
+    implementation 'org.springframework.cloud:spring-cloud-starter'
+    implementation 'org.springframework.integration:spring-integration-amqp:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-http:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-jdbc:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-jpa:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-kafka'
+    implementation 'org.springframework.integration:spring-integration-mail:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-mongodb:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-rsocket:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-security:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-stomp:6.1.0'
+    implementation 'org.springframework.integration:spring-integration-websocket:6.0.2'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.security:spring-security-messaging:6.0.2'
+    implementation 'org.springframework.security:spring-security-rsocket:6.0.2'
+    implementation 'org.springframework.shell:spring-shell-starter:3.0.1'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
+    runtimeOnly 'com.h2database:h2:2.1.214'
+    runtimeOnly 'org.hsqldb:hsqldb'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.0'
+    testImplementation 'io.projectreactor:reactor-test:3.5.4'
+    testImplementation 'org.springframework.amqp:spring-rabbit-test:3.0.2'
+    testImplementation 'org.springframework.batch:spring-batch-test:5.0.0'
+    testImplementation 'org.springframework.integration:spring-integration-test:6.0.2'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+
+
+    implementation 'com.github.princesslana:ErisCasper-Data:0.6.3'
+    implementation 'com.github.princesslana:ErisCasper-Data:0.6.3'
+    implementation 'com.github.princesslana:ErisCasper-Data:0.6.3'
+    implementation 'io.micronaut.data:micronaut-data-azure-cosmos:3.9.6'
+    implementation 'io.micronaut.data:micronaut-data-azure-cosmos:3.9.6'
+    implementation 'org.neo4j.springframework.data:spring-data-neo4j-rx:1.1.1'
+    implementation 'org.neo4j.springframework.data:spring-data-neo4j-rx:1.1.1'
+    implementation 'org.springframework.data:spring-data-neo4j:7.0.3'
+    implementation 'org.neo4j.springframework.data:spring-data-neo4j-rx-spring-boot-autoconfigure:1.1.1'
+    implementation 'org.neo4j.springframework.data:spring-data-neo4j-rx-spring-boot-autoconfigure:1.1.1'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-batch:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-cache:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-couchbase:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.0.7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-neo4j:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-integration:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache:3.0.7'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-rsocket:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket:3.0.4'
+    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j:3.0.0'
+    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery:4.0.1'
+    implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer:4.0.1'
+    implementation 'org.springframework.integration:spring-integration-amqp:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-http:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-jms:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-mail:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-mongodb:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-rsocket:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-stomp:6.1.0'
+    implementation 'org.springframework.integration:spring-integration-webflux:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-websocket:6.0.2'
+    implementation 'org.springframework.security:spring-security-messaging:6.0.2'
+    implementation 'org.springframework.security:spring-security-rsocket:6.0.2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
+    runtimeOnly 'com.h2database:h2:2.1.214'
+    runtimeOnly 'com.mysql:mysql-connector-j:8.2.0'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.0'
+    testImplementation 'io.projectreactor:reactor-test:3.5.4'
+    testImplementation 'org.springframework.amqp:spring-rabbit-test:3.0.2'
+    testImplementation 'org.springframework.batch:spring-batch-test:5.0.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+
+    implementation 'com.sparkjava:spark-core:2+'
+
+
+    implementation 'org.apache.commons:commons-lang3:3.10'
+
+    implementation 'com.google.code.gson:gson:2.8.9'       // real module
+    implementation 'org.apache.commons:commons-lang3:3.10' // automatic module
+    implementation 'commons-cli:commons-cli:1.4'
+
+
+    implementation group: 'org.spark-project.hive', name: 'hive', version: '1.2.1.spark2'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-batch:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-cache:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-cassandra'
+    implementation 'org.springframework.boot:spring-boot-starter-data-cassandra-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-couchbase:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-couchbase-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-ldap'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.0.7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-neo4j:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-starter-integration:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-jersey'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.4'
+
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+    implementation 'org.springframework.boot:spring-boot-starter-rsocket:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket:3.0.4'
+    implementation 'com.okta.spring:okta-spring-boot-starter:3.0.4'
+    implementation 'org.apache.kafka:kafka-streams'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+    implementation 'org.springframework.cloud:spring-cloud-starter'
+    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j:3.0.0'
+    implementation 'org.springframework.integration:spring-integration-amqp:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-jdbc:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-jms:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-jpa:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-kafka'
+    implementation 'org.springframework.integration:spring-integration-mail:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-mongodb:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-r2dbc'
+    implementation 'org.springframework.integration:spring-integration-redis'
+    implementation 'org.springframework.integration:spring-integration-security:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-stomp:6.1.0'
+    implementation 'org.springframework.integration:spring-integration-websocket:6.0.2'
+    implementation 'org.springframework.integration:spring-integration-ws'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.security:spring-security-messaging:6.0.2'
+    implementation 'org.springframework.security:spring-security-rsocket:6.0.2'
+    implementation 'org.springframework.shell:spring-shell-starter:3.0.1'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:3.0.4'
+
+    runtimeOnly 'com.ibm.db2:jcc'
+    runtimeOnly 'io.micrometer:micrometer-registry-datadog:1.10.5'
+    runtimeOnly 'io.micrometer:micrometer-registry-dynatrace'
+    runtimeOnly 'io.micrometer:micrometer-registry-graphite'
+    runtimeOnly 'io.micrometer:micrometer-registry-influx'
+    runtimeOnly 'io.micrometer:micrometer-registry-new-relic'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly 'org.apache.derby:derby'
+    runtimeOnly 'org.hsqldb:hsqldb'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.4'
+
+    testImplementation 'io.projectreactor:reactor-test:3.5.4'
+    testImplementation 'org.springframework.amqp:spring-rabbit-test:3.0.2'
+    testImplementation 'org.springframework.batch:spring-batch-test:5.0.0'
+    testImplementation 'org.springframework.integration:spring-integration-test:6.0.2'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:11.0.7'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.0'
+
+    implementation ('org.slf4j:slf4j-reload4j:2.0.6') {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+
+    runtimeOnly 'org.postgresql:postgresql'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+
+defaultTasks = ['clean']
+//task stage(dependsOn: ['clean', 'installDist'])
+
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.shell:spring-shell-dependencies:${springShellVersion}"
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+//        mavenBom "com.solace.spring.cloud:solace-spring-cloud-bom:${solaceSpringCloudVersion}"
+//        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+//    }
+//}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+
+tasks.named('bootJar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
